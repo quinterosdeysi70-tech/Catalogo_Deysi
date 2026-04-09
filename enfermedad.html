@@ -1,0 +1,567 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bioliffe - Información</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --verde: #00d96a; --glow-soft: 0 0 12px #00d96a55; }
+
+    body {
+      font-family: 'Comfortaa', cursive;
+      background: #ffffff;
+      color: #0a2e14;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before { display: none; }
+
+    header { position: relative; z-index: 10; text-align: center; padding: 28px 20px 10px; }
+    .logo-text {
+      height: 72px; width: 200px;
+      object-fit: contain; mix-blend-mode: multiply;
+      animation: pulso 3s ease-in-out infinite;
+    }
+    @keyframes pulso { 0%,100%{opacity:1} 50%{opacity:.82} }
+
+    .btn-volver {
+      position: relative; z-index: 10;
+      display: inline-flex; align-items: center; gap: 8px;
+      margin: 14px 20px; padding: 8px 18px;
+      background: white; border: 2px solid #e0ede5; border-radius: 20px;
+      text-decoration: none; color: #0a2e14;
+      font-family: 'Comfortaa', cursive; font-size: 0.83rem;
+      font-weight: 600; letter-spacing: 1px; transition: all 0.3s;
+    }
+    .btn-volver:hover { border-color: var(--verde); color: var(--verde); box-shadow: var(--glow-soft); }
+
+    .linea-glow {
+      width: 80%; max-width: 500px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--verde), transparent);
+      margin: 8px auto 26px; box-shadow: var(--glow-soft);
+    }
+
+    .contenido {
+      position: relative; z-index: 10;
+      max-width: 680px; margin: 0 auto; padding: 0 16px 60px;
+    }
+
+    /* TÍTULO */
+    .enf-titulo {
+      text-align: center; margin-bottom: 24px;
+    }
+    .enf-titulo .icono { font-size: 2.4rem; display: block; margin-bottom: 10px; }
+    .enf-titulo .pregunta {
+      font-size: 0.9rem; letter-spacing: 1px;
+      color: #0a2e14; font-weight: 700; margin-bottom: 4px;
+    }
+    .enf-titulo h2 {
+      font-size: 1.55rem; font-weight: 700;
+      color: #0a2e14; letter-spacing: 1px;
+      line-height: 1.2; margin-bottom: 8px;
+    }
+    .enf-titulo .consume {
+      font-size: 1rem; font-weight: 700;
+      color: #0a2e14; letter-spacing: 1px;
+      margin-bottom: 14px; display: block;
+    }
+    .productos-pills {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 8px; margin-bottom: 6px;
+    }
+    .pill {
+      background: #f5f5f5; border: 2px solid #00d96a40;
+      color: #0a2e14; font-size: 0.76rem; font-weight: 700;
+      padding: 6px 14px; border-radius: 20px;
+      box-shadow: 0 2px 8px #00d96a18;
+    }
+    .enf-titulo .linea {
+      width: 60px; height: 3px; background: var(--verde);
+      border-radius: 2px; margin: 16px auto 0; box-shadow: var(--glow-soft);
+    }
+
+    /* IMAGEN PRODUCTOS */
+    .img-bloque { margin-bottom: 20px; }
+    .img-bloque .img-label {
+      font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--verde); font-weight: 700; margin-bottom: 8px;
+      text-shadow: 0 0 8px #00d96a55;
+    }
+    .img-bloque img {
+      width: 100%; border-radius: 16px;
+      border: 2px solid #e0ede5;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.09); display: block;
+    }
+
+    /* MÉTODO DE CONSUMO */
+    .metodo-box {
+      background: white; border: 2px solid #e0ede5;
+      border-radius: 16px; padding: 20px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .metodo-titulo {
+      font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase;
+      font-weight: 700; color: #0a2e14;
+      padding-bottom: 12px; margin-bottom: 14px;
+      border-bottom: 1px solid #e8f5e9;
+    }
+    .metodo-item {
+      display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start;
+    }
+    .metodo-item:last-child { margin-bottom: 0; }
+    .metodo-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--verde); flex-shrink: 0; margin-top: 6px;
+      box-shadow: 0 0 6px #00d96a88;
+    }
+    .metodo-prod {
+      font-size: 0.78rem; font-weight: 700; color: var(--verde);
+      margin-bottom: 3px;
+    }
+    .metodo-dosis {
+      font-size: 0.82rem; color: #333; line-height: 1.55;
+    }
+
+    /* BLOQUE WHATSAPP */
+    .wa-bloque {
+      background: #0a2e14; border-radius: 20px;
+      padding: 26px 20px; text-align: center;
+      margin-top: 4px; box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+    }
+    .wa-titulo {
+      font-size: 1rem; font-weight: 700; color: var(--verde);
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 6px; text-shadow: 0 0 12px #00d96a88;
+    }
+    .wa-bloque p {
+      font-size: 0.82rem; color: #c8f5d8;
+      letter-spacing: 1px; margin-bottom: 18px; line-height: 1.6;
+    }
+    .btn-wa-grande {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      background: #25D366; color: white; border: none; border-radius: 14px;
+      padding: 16px 24px; width: 100%;
+      font-family: 'Comfortaa', cursive; font-size: 0.95rem; font-weight: 700;
+      letter-spacing: 1px; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5); transition: all 0.3s;
+    }
+    .btn-wa-grande:hover {
+      background: #1ebe5d;
+      box-shadow: 0 6px 30px rgba(37,211,102,0.7);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      position: relative; z-index: 10; text-align: center;
+      padding: 20px; font-size: 0.70rem; color: #00d96a66;
+      letter-spacing: 2px; border-top: 1px solid #00d96a20;
+    }
+
+    @media (max-width: 480px) {
+      .enf-titulo h2 { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header><img class="logo-text" src="imagenes/Logo.png" alt="Bioliffe"/><p style="font-size:0.75rem;letter-spacing:4px;color:#00d96a99;margin-top:4px;text-transform:uppercase;font-family:'Comfortaa',cursive;">MORINGA 100% NATURAL</p></header>
+<a href="enfermedades.html" class="btn-volver">◀ Volver al catálogo</a>
+<div class="linea-glow"></div>
+
+<div class="contenido" id="contenido">
+  <p style="text-align:center;padding:40px;color:#999;">Cargando...</p>
+</div>
+
+<a href="index.html" class="btn-volver" style="display:flex;justify-content:center;margin:0 20px 16px;">◀ Volver al inicio</a>
+<footer>BIOLIFFE BOLIVIA · CATÁLOGO DE ENFERMEDADES · 2026</footer>
+
+<script src="config.js"></script>
+<script>
+  // WhatsApp se lee automáticamente desde config.js
+  const WA = SOCIA.whatsapp;
+
+  const DB = {
+
+    'diabetes': {
+      nombre: 'Diabetes', icono: '🩸',
+      prod: 'imagenes/producto_enfer/diabetes.png',
+      metodo: [
+        { p: 'Eficlax', d: '1 sobre antes de la cena, beber con agua tibia o caliente.' },
+        { p: 'Alka-M', d: '1 sobre antes del almuerzo y 1 sobre antes de la cena.' },
+        { p: 'Cápsulas de Moringa', d: '3 cápsulas al día: después del desayuno, almuerzo y cena.' },
+        { p: 'Purifort', d: '3 cápsulas al día: después del desayuno, almuerzo y cena.' }
+      ]
+    },
+
+    'calculos-renales': {
+      nombre: 'Cálculos Renales', icono: '🫘',
+      prod: 'imagenes/producto_enfer/calculos_renales.png',
+      metodo: [
+        { p: 'Alka-M', d: '1 sobre antes del desayuno, 1 sobre antes del almuerzo y 1 sobre antes de la cena.' },
+        { p: 'Ori Cápsulas Blandas', d: 'Consumir cápsulas diariamente según indicación.' },
+        { p: 'Althus', d: 'Consumo diario después de las comidas.' }
+      ]
+    },
+
+    'bajar-peso': {
+      nombre: 'Bajar de Peso', icono: '⚖️',
+      prod: 'imagenes/producto_enfer/bajar_peso.png',
+      metodo: [
+        { p: 'Eficlax', d: '1 sobre en agua tibia o caliente antes del desayuno.' },
+        { p: 'Alka-M', d: '1 sobre antes del almuerzo y 1 sobre antes de la cena.' },
+        { p: 'Cápsulas de Moringa', d: '3 cápsulas al día después de cada comida.' }
+      ]
+    },
+
+    'asma': {
+      nombre: 'Asma', icono: '🫁',
+      prod: 'imagenes/producto_enfer/asma.png',
+      metodo: [
+        { p: 'Amagi Café', d: '1 taza caliente antes del desayuno y 1 taza caliente antes de dormir.' },
+        { p: 'Althus', d: 'Consumir cápsulas diariamente.' },
+        { p: 'Amagi Fit', d: 'Consumo diario.' }
+      ]
+    },
+
+    'artrosis': {
+      nombre: 'Artrosis', icono: '🦴',
+      prod: 'imagenes/producto_enfer/artrosis.png',
+      metodo: [
+        { p: 'Revella', d: '1 sobre en agua tibia o caliente antes del desayuno y 1 sobre antes de dormir.' },
+        { p: 'Althus', d: 'Cápsulas al día después de las comidas.' }
+      ]
+    },
+
+    'apendicitis': {
+      nombre: 'Apendicitis', icono: '🫙',
+      prod: 'imagenes/producto_enfer/apendicitis.png',
+      metodo: [
+        { p: 'Amagi Café', d: '1 taza caliente antes del desayuno y 1 taza caliente antes de dormir.' },
+        { p: 'Alka-M', d: '1 sobre después del desayuno, 1 después del almuerzo y 1 después de la cena.' }
+      ]
+    },
+
+    'aneurisma': {
+      nombre: 'Aneurisma', icono: '🫀',
+      prod: 'imagenes/producto_enfer/aneurisma.png',
+      metodo: [
+        { p: 'Althus', d: '3 cápsulas al día: mañana, tarde y noche, después de cada comida.' },
+        { p: 'Eficlax', d: '1 sobre en agua tibia antes del desayuno.' },
+        { p: 'Ori Cápsulas Blandas', d: 'Cápsulas diariamente.' }
+      ]
+    },
+
+    'anemia': {
+      nombre: 'Anemia', icono: '🩸',
+      prod: 'imagenes/producto_enfer/anemia.png',
+      metodo: [
+        { p: 'Amagi Café', d: '1 taza en la mañana antes del desayuno y 1 taza en la noche antes de dormir.' },
+        { p: 'Ori Cápsulas Blandas', d: 'Cápsulas diariamente.' },
+        { p: 'Althus', d: 'Cápsulas al día después de las comidas.' }
+      ]
+    },
+
+    'alzheimer': {
+      nombre: 'Alzheimer', icono: '🧠',
+      prod: 'imagenes/producto_enfer/alzheimer.png',
+      metodo: [
+        { p: 'Amagi Café', d: '1 taza caliente antes del desayuno.' },
+        { p: 'Revella', d: '1 sobre en agua tibia o caliente antes del almuerzo.' },
+        { p: 'Althus', d: 'Cápsulas al día después de las comidas.' }
+      ]
+    },
+
+    'pulmones': {
+      nombre: 'Pulmones', icono: '🫁',
+      prod: 'imagenes/producto_enfer/pulmones_malos.png',
+      metodo: [
+        { p: 'Ori Cápsulas Blandas', d: '1 cápsula antes del desayuno, 1 antes del almuerzo, 1 antes de la cena y 1 antes de dormir.' },
+        { p: 'Revella', d: '1 sobre en agua tibia antes del desayuno y 1 sobre antes de dormir.' }
+      ]
+    },
+
+    'crecimiento-ninos': {
+      nombre: 'Crecimiento para Niños', icono: '👶',
+      prod: 'imagenes/producto_enfer/crecimient_niños.png',
+      metodo: [
+        { p: 'Amagi + Moringa', d: '2 sobres de Amagi con 1 cucharada de moringa. 1 taza en las mañanas y 1 en las tardes.' },
+        { p: 'Biokids Gomitas', d: '3 gomitas por día: 1 en el desayuno, 1 en el almuerzo y 1 en la cena.' }
+      ]
+    },
+
+    'estrenimiento': {
+      nombre: 'Estreñimiento', icono: '🌿',
+      prod: 'imagenes/producto_enfer/estreñimiento.png',
+      metodo: [
+        { p: 'Epiclax + Purifort', d: '1 sobre de Epiclax combinado con Purifort. Consumir en la mañana con agua tibia. Tomar entre 5 a 7 días.' }
+      ]
+    },
+
+    'acne-manchas': {
+      nombre: 'Acné y Manchas', icono: '✨',
+      prod: 'imagenes/producto_enfer/acne_manchas.png',
+      metodo: [
+        { p: 'Eficlax', d: '1 sobre en agua tibia o caliente antes del desayuno.' },
+        { p: 'Alka-M', d: '3 tabletas al día después de las comidas.' },
+        { p: 'Ori Cápsulas Blandas', d: 'Cápsulas diariamente.' }
+      ]
+    },
+
+    'masa-muscular': {
+      nombre: 'Masa Muscular', icono: '💪',
+      prod: 'imagenes/producto_enfer/masa_muscular.png',
+      metodo: [
+        { p: 'Revella', d: '1 sobre en agua tibia antes de entrenar o antes del desayuno.' },
+        { p: 'Amagi Café', d: '1 taza caliente antes o después del entrenamiento.' }
+      ]
+    },
+
+    'conjuntivitis': {
+      nombre: 'Conjuntivitis', icono: '👁️',
+      prod: 'imagenes/producto_enfer/conjuntivitis.png',
+      metodo: [
+        { p: 'Ori Cápsulas Blandas', d: '2 cápsulas antes del desayuno. Aplicar 2 gotas del aceite de moringa en el ojo afectado antes de dormir.' },
+        { p: 'Alka-M', d: '3 tabletas al día.' },
+        { p: 'Althus', d: 'Tabletas al día.' }
+      ]
+    },
+
+    'gastritis': {
+      nombre: 'Gastritis', icono: '🫙',
+      prod: 'imagenes/producto_enfer/gastritis.png',
+      metodo: [
+        { p: 'Ori Cápsulas Blandas', d: '1 cápsula antes del desayuno, 1 antes del almuerzo y 1 antes de la cena.' },
+        { p: 'Alka-M', d: '1 sobre antes de las 3 comidas principales.' },
+        { p: 'Cápsulas de Moringa', d: '3 cápsulas al día después del desayuno, almuerzo y cena.' }
+      ]
+    },
+
+    'dengue': {
+      nombre: 'Dengue', icono: '🦟',
+      prod: 'imagenes/producto_enfer/dengue.png',
+      metodo: [
+        { p: 'Althus + Revella', d: '1 sobre de cada uno. Mezclar en un litro de agua y consumir durante el día.' },
+        { p: 'Amagi Café', d: '7 sobres al día. Consumir 2 sobres cada 3 horas aproximadamente.' }
+      ]
+    },
+
+    'rejuvenece': {
+      nombre: 'Rejuvenece', icono: '🌟',
+      prod: 'imagenes/producto_enfer/rejuvenese.png',
+      metodo: [
+        { p: 'Eternal Crema', d: 'Aplicar en las noches en todas las zonas del rostro. Usar poca cantidad. Si hay sensación de ardor al inicio es normal. Los resultados se ven luego de algunos días de aplicación continua.' }
+      ]
+    },
+
+    'colicos-menstruales': {
+      nombre: 'Cólicos Menstruales', icono: '🌸',
+      prod: 'imagenes/producto_enfer/colicos_mentruales.png',
+      metodo: [
+        { p: 'Amagi Black', d: '1 taza caliente, 3 veces al día: mañana, tarde y noche.' },
+        { p: 'Althus', d: 'Cápsulas al día antes o durante los cólicos.' }
+      ]
+    },
+
+    'colesterol-alto': {
+      nombre: 'Colesterol Alto', icono: '💛',
+      prod: 'imagenes/producto_enfer/colesterol_alto.png',
+      metodo: [
+        { p: 'Alka-M', d: '1 sobre antes del desayuno, 1 antes del almuerzo y 1 antes de la cena.' },
+        { p: 'Eficlax', d: '1 sobre en agua tibia en las mañanas.' },
+        { p: 'Ori Cápsulas Blandas', d: 'Cápsulas al día después de las comidas.' }
+      ]
+    },
+
+    'chagas': {
+      nombre: 'Chagas', icono: '🦠',
+      prod: 'imagenes/producto_enfer/chagas.png',
+      metodo: [
+        { p: 'Revella', d: '1 sobre en agua tibia antes del desayuno y 1 sobre antes de dormir.' },
+        { p: 'Alka-M', d: '3 tabletas al día: 1 después de cada comida.' },
+        { p: 'Ori Cápsulas Blandas', d: 'Cápsulas diariamente.' },
+        { p: 'Althus', d: 'Cápsulas diariamente.' }
+      ]
+    },
+
+    'cataratas': {
+      nombre: 'Cataratas', icono: '👁️',
+      prod: 'imagenes/producto_enfer/cataratas.png',
+      metodo: [
+        { p: 'Eficlax', d: '1 sobre antes del desayuno y 1 sobre antes de dormir.' },
+        { p: 'Revella', d: '1 sobre en agua tibia o caliente.' },
+        { p: 'Ori Cápsulas Blandas', d: 'Aplicar 2 gotas del aceite directamente en el ojo afectado antes de dormir. Parpadear varias veces para distribuir.' }
+      ]
+    },
+
+    'rinones': {
+      nombre: 'Riñones', icono: '🫘',
+      prod: 'imagenes/producto_enfer/riñones.png',
+      metodo: [
+        { p: 'Alka-M', d: '1 sobre antes del desayuno, 1 antes del almuerzo y 1 antes de la cena.' },
+        { p: 'Vegafull', d: 'Cápsulas diariamente.' },
+        { p: 'Revitalis', d: 'Cápsulas diariamente.' }
+      ]
+    },
+
+    'artritis': {
+      nombre: 'Artritis', icono: '🦴',
+      prod: 'imagenes/producto_enfer/artritis.png',
+      metodo: [
+        { p: 'Revella', d: '1 sobre en agua tibia o caliente antes del desayuno y 1 antes de dormir.' },
+        { p: 'Althus', d: 'Cápsulas al día después de las comidas.' },
+        { p: 'Amagi Café', d: '1 taza caliente en la mañana antes del desayuno.' }
+      ]
+    },
+
+    'caida-cabello': {
+      nombre: 'Caída de Cabello', icono: '💆',
+      prod: 'imagenes/producto_enfer/caida_cabello.png',
+      metodo: [
+        { p: 'Cápsulas de Moringa', d: '1 cápsula al día de moringa.' },
+        { p: 'Nutro Shampoo', d: 'Aplicar en el cabello mojado. Dejar actuar 3 a 5 minutos. Enjuagar normalmente. Usar diariamente o en días alternos.' }
+      ]
+    },
+
+    'trilogia': {
+      nombre: 'La Trilogía', icono: '🌿',
+      prod: 'imagenes/producto_enfer/trilogia.png',
+      metodo: [
+        { p: 'Purifort', d: 'Desintoxica el organismo.' },
+        { p: 'Ori Cápsulas Blandas', d: 'Regenera células y tejidos.' },
+        { p: 'Cápsulas de Moringa', d: 'Nutre el cuerpo con vitaminas y minerales esenciales.' }
+      ]
+    },
+
+    'asesoramiento': {
+      nombre: 'Asesoramiento', icono: '💬',
+      prod: 'imagenes/producto_enfer/asesoramiento.png',
+      metodo: [
+        { p: 'Consulta personalizada', d: 'Escríbenos por WhatsApp y te asesoramos con los mejores productos según tu caso específico.' }
+      ]
+    }
+
+  };
+
+  (function() {
+    const id  = new URLSearchParams(window.location.search).get('e');
+    const enf = DB[id];
+    const box = document.getElementById('contenido');
+
+    if (!enf) {
+      box.innerHTML = '<p style="text-align:center;padding:50px;color:#555;">No encontrado. <a href="enfermedades.html">Volver</a></p>';
+      return;
+    }
+
+    document.title = 'Bioliffe — ' + enf.nombre;
+
+    // Mapa de nombre de producto → ID en detalle.html
+    const PROD_ID = {
+      'Amagi Café': 'amagi-cafe', 'Amagi Black': 'amagi-black',
+      'Amagi Cappuccino': 'amagi-cappuccino', 'Amagi Fit': 'amagi-fit',
+      'Alka-M': 'alkam-suplemento', 'Althus': 'althus-energizante',
+      'Biokids Gomitas': 'biokids-gomitas', 'Cápsulas de Moringa': 'capsulas-moringa',
+      'Epiclax': 'epiclax-detox', 'Eficlax': 'epiclax-detox',
+      'Eternal Crema': 'eternal-crema', 'Harina de Moringa': 'harina-moringa',
+      'Metha': 'metha-quemador', 'Ori Cápsulas Blandas': 'oni-capsulas-blandas',
+      'Propóleo': 'propoleo-moringa', 'Proteína Colosal': 'proteina-nutricional',
+      'Purifort': 'purifort-capsulas', 'Revella': 'colageno-revella',
+      'Revitalis': 'revitalis', 'Vegafull': 'vegafull',
+      'Xol': 'xol-aceite', 'Nutro Shampoo': 'nutro-shampoo',
+    };
+
+    const pills = enf.metodo.map(m => {
+      const id = PROD_ID[m.p];
+      return id
+        ? `<a href="detalle.html?p=${id}" class="pill" style="text-decoration:none;">${m.p}</a>`
+        : `<span class="pill">${m.p}</span>`;
+    }).join('');
+
+    const items = enf.metodo.map(m => {
+      const id = PROD_ID[m.p];
+      const nombre = id
+        ? `<a href="detalle.html?p=${id}" style="color:var(--verde);text-decoration:none;font-weight:700;">${m.p}</a>`
+        : `<strong>${m.p}</strong>`;
+      return `
+      <div class="metodo-item">
+        <div class="metodo-dot"></div>
+        <div>
+          <div class="metodo-prod">${nombre}</div>
+          <div class="metodo-dosis">${m.d}</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    const msg = encodeURIComponent(
+      '¡Hola! Vi tu catálogo Bioliffe y tengo una consulta sobre:\n\n*' +
+      enf.nombre + '*\n\n¿Podrías darme más información sobre los productos recomendados? 🌿'
+    );
+    const waLink = WA;
+
+    box.innerHTML = `
+      <div class="enf-titulo">
+        <span class="icono">${enf.icono}</span>
+        <div class="pregunta">¿Tienes</div>
+        <h2>${enf.nombre}?</h2>
+        <span class="consume">Consume esto 👇</span>
+        <div class="productos-pills">${pills}</div>
+        <div class="linea"></div>
+      </div>
+
+      <div class="img-bloque">
+        <div class="img-label">Productos recomendados</div>
+        <img src="${enf.prod}" alt="Productos para ${enf.nombre}"/>
+      </div>
+
+      <div class="metodo-box">
+        <div class="metodo-titulo">Método de consumo</div>
+        ${items}
+      </div>
+
+      <a href="catalogo.html" style="
+        display:flex; align-items:center; justify-content:center; gap:12px;
+        background: linear-gradient(135deg, #f0fff6, #e0fdf0);
+        color:#0a2e14;
+        border: 2px solid #00d96a;
+        border-radius: 16px;
+        padding: 16px 24px;
+        width: 100%;
+        font-family:'Comfortaa',cursive;
+        font-size: 0.92rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-decoration: none;
+        margin-bottom: 16px;
+        box-shadow: 0 0 16px #00d96a55, 0 0 32px #00d96a22, inset 0 0 12px #00d96a11;
+        transition: all 0.3s;
+        animation: glow-btn 2.5s ease-in-out infinite;
+      ">
+        <span style="font-size:1.3rem;">🌿</span>
+        <span>Ver Catálogo de Productos</span>
+        <span style="color:#00d96a;font-size:1rem;">›</span>
+      </a>
+      <style>
+        @keyframes glow-btn {
+          0%,100% { box-shadow: 0 0 16px #00d96a55, 0 0 32px #00d96a22; }
+          50%      { box-shadow: 0 0 24px #00d96a99, 0 0 48px #00d96a44; }
+        }
+      </style>
+
+      <div class="wa-bloque">
+        <div class="wa-titulo">¿Quieres más información?</div>
+        <p>Escríbenos directamente por WhatsApp y<br/>te atendemos al instante</p>
+        <a class="btn-wa-grande" href="${waLink}" target="_blank">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Para más información presiona aquí
+        </a>
+      </div>
+    `;
+  })();
+</script>
+
+</body>
+</html>
